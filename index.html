@@ -3,17 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>بوابة مادة التقنية الرقمية</title>
+    <title>بوابة مادة التقنية الرقمية | لوحة التحكم</title>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
             --primary: #4f46e5;
             --secondary: #06b6d4;
+            --accent: #f59e0b;
+            --danger: #ef4444;
+            --success: #10b981;
             --dark: #0f172a;
-            --light: #f8fafc;
             --card-bg: rgba(30, 41, 59, 0.7);
             --border-color: rgba(255, 255, 255, 0.1);
+            --light: #f8fafc;
         }
 
         * {
@@ -28,6 +31,7 @@
             color: var(--light);
             line-height: 1.6;
             padding: 20px;
+            padding-bottom: 80px;
         }
 
         .container {
@@ -37,10 +41,11 @@
 
         /* الهيدر والعنوان الرئيسي */
         header {
+            position: relative;
             text-align: center;
-            margin-bottom: 40px;
+            margin-bottom: 30px;
             padding: 30px;
-            background: linear-gradient(135deg, rgba(79, 70, 229, 0.2), rgba(6, 182, 212, 0.2));
+            background: linear-gradient(135deg, rgba(79, 70, 229, 0.25), rgba(6, 182, 212, 0.25));
             border-radius: 16px;
             border: 1px solid var(--border-color);
             backdrop-filter: blur(10px);
@@ -59,236 +64,19 @@
             font-size: 1.1rem;
         }
 
-        /* شريط التنقل والأقسام */
-        .nav-tabs {
+        /* شريط وضع المعلم العلوي */
+        .admin-top-bar {
             display: flex;
-            justify-content: center;
-            gap: 10px;
-            margin-bottom: 30px;
-            flex-wrap: wrap;
-        }
-
-        .tab-btn {
-            background: rgba(30, 41, 59, 0.8);
-            border: 1px solid var(--border-color);
-            color: #cbd5e1;
-            padding: 10px 20px;
-            border-radius: 8px;
-            cursor: pointer;
-            font-weight: 600;
-            transition: all 0.3s ease;
-        }
-
-        .tab-btn.active, .tab-btn:hover {
-            background: var(--primary);
-            color: #fff;
-            border-color: var(--primary);
-            box-shadow: 0 4px 15px rgba(79, 70, 229, 0.4);
-        }
-
-        /* الأقسام المخفية والظاهرة */
-        .section-content {
-            display: none;
-        }
-
-        .section-content.active {
-            display: block;
-            animation: fadeIn 0.5s ease-in-out;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* شبكة العناصر (Grid) */
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
-        }
-
-        /* البطاقات (Cards) */
-        .card {
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 20px;
-            backdrop-filter: blur(10px);
-            transition: transform 0.3s ease, border-color 0.3s ease;
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-            border-color: var(--secondary);
-        }
-
-        .card h3 {
-            font-size: 1.3rem;
-            margin-bottom: 10px;
-            color: #f1f5f9;
-        }
-
-        .card p {
-            color: #94a3b8;
-            font-size: 0.95rem;
-            margin-bottom: 15px;
-        }
-
-        /* الأزرار داخل البطاقات */
-        .btn {
-            display: inline-block;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: white;
-            padding: 8px 16px;
-            border-radius: 6px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.9rem;
-            transition: opacity 0.2s;
-        }
-
-        .btn:hover {
-            opacity: 0.9;
-        }
-
-        /* إعلانات لوحة الشرف / التنبيهات */
-        .announcement-box {
-            background: linear-gradient(135deg, rgba(234, 179, 8, 0.1), rgba(249, 115, 22, 0.1));
-            border: 1px solid rgba(234, 179, 8, 0.3);
-            border-radius: 12px;
-            padding: 20px;
-            margin-bottom: 15px;
-            display: flex;
+            justify-content: space-between;
             align-items: center;
-            gap: 15px;
-        }
-
-        .announcement-box i {
-            font-size: 2rem;
-            color: #facc15;
-        }
-
-        .section-title {
-            font-size: 1.5rem;
+            background: rgba(15, 23, 42, 0.6);
+            border-radius: 12px;
+            padding: 10px 20px;
             margin-bottom: 20px;
-            border-right: 4px solid var(--secondary);
-            padding-right: 10px;
-            color: #f8fafc;
+            border: 1px solid var(--border-color);
         }
-    </style>
-</head>
-<body>
 
-<div class="container">
-    <!-- الهيدر -->
-    <header>
-        <h1>منصة مادة التقنية الرقمية</h1>
-        <p>بوابة تعليمية متكاملة للكتب الدراسية، الدروس الإثرائية، الإعلانات، ومشاريع الطلاب</p>
-    </header>
-
-    <!-- الأزرار التفاعلية للتنقل بين الأقسام -->
-    <div class="nav-tabs">
-        <button class="tab-btn active" onclick="switchTab(event, 'books')"><i class="fa-solid fa-book"></i> الكتب الدراسية</button>
-        <button class="tab-btn" onclick="switchTab(event, 'lessons')"><i class="fa-solid fa-laptop-code"></i> المحتوى والدروس</button>
-        <button class="tab-btn" onclick="switchTab(event, 'announcements')"><i class="fa-solid fa-bullhorn"></i> الإعلانات والتنبيهات</button>
-        <button class="tab-btn" onclick="switchTab(event, 'projects')"><i class="fa-solid fa-diagram-project"></i> مشاريع الطلاب</button>
-    </div>
-
-    <!-- 1. قسم الكتب الدراسية -->
-    <div id="books" class="section-content active">
-        <h2 class="section-title">كتب المقررات الرقمية</h2>
-        <div class="grid">
-            <div class="card">
-                <h3>التقنية الرقمية 1-1</h3>
-                <p>مقدمة في علوم الحاسب، نظم التشغيل، والمهارات الأساسية للأنظمة الرقمية.</p>
-                <a href="#" class="btn"><i class="fa-solid fa-download"></i> تحميل الكتاب PDF</a>
-            </div>
-            <div class="card">
-                <h3>التقنية الرقمية 2-1</h3>
-                <p>قواعد البيانات، البرمجة بلغة بايثون، وتصميم صفحات الويب التفاعلية.</p>
-                <a href="#" class="btn"><i class="fa-solid fa-download"></i> تحميل الكتاب PDF</a>
-            </div>
-            <div class="card">
-                <h3>التقنية الرقمية 3-1</h3>
-                <p>الأمن السيبراني، الذكاء الاصطناعي، ومشاريع البرمجيات المتقدمة.</p>
-                <a href="#" class="btn"><i class="fa-solid fa-download"></i> تحميل الكتاب PDF</a>
-            </div>
-        </div>
-    </div>
-
-    <!-- 2. قسم المحتوى والدروس -->
-    <div id="lessons" class="section-content">
-        <h2 class="section-title">المحتوى التعليمي والدروس الإثرائية</h2>
-        <div class="grid">
-            <div class="card">
-                <h3>أساسيات لغة Python</h3>
-                <p>شرح المتغيرات، الجمل الشرطية، وحلقات التكرار مع تطبيقات عملية مبسطة.</p>
-                <a href="#" class="btn"><i class="fa-solid fa-play"></i> مشاهدة الدرس</a>
-            </div>
-            <div class="card">
-                <h3>حماية البيانات والأمن السيبراني</h3>
-                <p>تعرف على أساليب الحماية الرقمية، التصيد الإلكتروني، وتأمين الحسابات الشخصية.</p>
-                <a href="#" class="btn"><i class="fa-solid fa-play"></i> مشاهدة الدرس</a>
-            </div>
-            <div class="card">
-                <h3>تصميم المواقع (HTML & CSS)</h3>
-                <p>بناء الهيكل الأساسي لصفحات الويب وتنسيقها باستخدام أحدث تقنيات التصميم.</p>
-                <a href="#" class="btn"><i class="fa-solid fa-play"></i> مشاهدة الدرس</a>
-            </div>
-        </div>
-    </div>
-
-    <!-- 3. قسم الإعلانات والتنبيهات -->
-    <div id="announcements" class="section-content">
-        <h2 class="section-title">لوحة الإعلانات والتنبيهات المدرسية</h2>
-        <div class="announcement-box">
-            <i class="fa-solid fa-triangle-exclamation"></i>
-            <div>
-                <h3>موعد تسليم المشاريع العملية</h3>
-                <p>تنبيه لجميع الطلاب بضرورة تسليم مشروع الوحدة الثانية قبل نهاية يوم الأربعاء القادم عبر المنصة.</p>
-            </div>
-        </div>
-        <div class="announcement-box">
-            <i class="fa-solid fa-award"></i>
-            <div>
-                <h3>انطلاق مسابقة الابتكار البرمجي</h3>
-                <p>تم فتح باب التسجيل لمسابقة مشاريع البرمجة والذكاء الاصطناعي على مستوى المدرسة. للمشاركة يرجى مراجعة معلم المادة.</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- 4. قسم مشاريع الطلاب -->
-    <div id="projects" class="section-content">
-        <h2 class="section-title">معرض مشاريع وإبداعات الطلاب</h2>
-        <div class="grid">
-            <div class="card">
-                <h3>تطبيق إدارة المهام اليومية</h3>
-                <p><strong>الطالب:</strong> أحمد محمد<br>تطبيق تفاعلي بلغة بايثون لتنظيم المهام الشخصية اليومية.</p>
-                <a href="#" class="btn"><i class="fa-solid fa-eye"></i> استعراض المشروع</a>
-            </div>
-            <div class="card">
-                <h3>موقع توعوي عن الأمن السيبراني</h3>
-                <p><strong>الطالب:</strong> خالد عبد الله<br>موقع إلكتروني متكامل مصمم بلغة HTML/CSS للتوعية الرقمية.</p>
-                <a href="#" class="btn"><i class="fa-solid fa-eye"></i> استعراض المشروع</a>
-            </div>
-        </div>
-    </div>
-</div>
-
-<script>
-    // دالة التبديل بين الأقسام بمرونة وسلاسة
-    function switchTab(event, sectionId) {
-        const sections = document.querySelectorAll('.section-content');
-        sections.forEach(sec => sec.classList.remove('active'));
-
-        const buttons = document.querySelectorAll('.tab-btn');
-        buttons.forEach(btn => btn.classList.remove('active'));
-
-        document.getElementById(sectionId).classList.add('active');
-        event.currentTarget.classList.add('active');
-    }
-</script>
-
-</body>
-</html>
+        .teacher-badge {
+            background: rgba(79, 70, 229, 0.2);
+            color: #818cf8;
+            padding: 5px 12px;
